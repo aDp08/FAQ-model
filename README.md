@@ -12,7 +12,7 @@ This repository contains a simple yet efficient multilingual FAQ bot that can au
 
 ---
 
-## Table of Contents 📚
+## Table of Contents 
 
 - [Installation Steps](#installation-steps)
 - [API Usage Examples](#api-usage-examples)
@@ -96,7 +96,7 @@ Welcome to the **FAQ Model** repository! This project is a powerful multilingual
 
 ---
 
-## What is this all about? 🤔
+## What is this all about? 
 
 This repository contains a simple yet efficient multilingual FAQ bot that can automatically answer questions in multiple languages. It is built with scalability and flexibility in mind, meaning you can easily integrate it into different platforms, services, or applications. You provide the questions and answers, and the bot does the rest!
 
@@ -111,7 +111,7 @@ This repository contains a simple yet efficient multilingual FAQ bot that can au
 
 ---
 
-## Installation Steps 🚀
+## Installation Steps 
 
 Ready to get started? Let’s set up this project on your local machine!
 
