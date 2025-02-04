@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ List</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the FAQ Page!</h1>
+
+        <ul>
+            {% for faq in faqs %}
+                <li>
+                    <strong>{{ faq.question_en }}</strong>: {{ faq.answer_en }}
+                </li>
+            {% empty %}
+                <li>No FAQs available.</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Submit a Question</h2>
+        <p>If you have a question, feel free to <a href="{% url 'submit_question' %}">submit it here</a>.</p>
+    </div>
+</body>
+</html>

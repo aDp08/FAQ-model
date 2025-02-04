@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Your Question</title>
+</head>
+<body>
+    <form id="questionForm">
+        {% csrf_token %}
+        <label for="questionInput">Your Question:</label>
+        <textarea id="questionInput" name="question" required></textarea><br>
+        <button type="button" id="submitQuestion">Submit</button>
+    </form>
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("ask-question-form").addEventListener("submit", function (event) {
+                event.preventDefault();  // Prevent default form submission behavior
+    
+                // Get CSRF token
+                var csrfTokenElement = document.querySelector('[name=csrfmiddlewaretoken]');
+                if (!csrfTokenElement) {
+                    console.error("CSRF token not found in the form.");
+                    return;
+                }
+                var csrftoken = csrfTokenElement.value;
+    
+                // Get the user's question input
+                var questionInput = document.getElementById("ask-question");
+                if (!questionInput) {
+                    console.error("Question input field not found.");
+                    return;
+                }
+                var question = questionInput.value.trim();
+    
+                if (!question) {
+                    alert("Please enter a question!");
+                    return;
+                }
+    
+                // Create a new XMLHttpRequest object
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "submit_question/", true);
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                xhr.setRequestHeader("Content-Type", "application/json");
+    
+                // Debugging Logs
+                console.log("Submitting Question:", question);
+                console.log("CSRF Token:", csrftoken);
+    
+                // Send the data as JSON
+                var data = JSON.stringify({ question: question });
+                xhr.send(data);
+    
+                // Handle response
+                xhr.onload = function () {
+                    console.log("Server Response Status:", xhr.status);
+                    console.log("Server Response Text:", xhr.responseText);
+    
+                    if (xhr.status === 200) {
+                        alert("Question submitted successfully!");
+                        questionInput.value = ""; // Clear the input field
+                    } else {
+                        alert("Error submitting question. Please try again.");
+                    }
+                };
+    
+                xhr.onerror = function () {
+                    alert("Request failed. Please check your connection.");
+                };
+            });
+        });
+    </script>
+    
+    
+        
+
+   
+</body>
+</html>
